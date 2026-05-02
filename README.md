@@ -1,16 +1,1 @@
-# kabir_portfolio
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+flutter build web --release; Copy-Item -Path "assets/logos" -Destination "build/web/assets/" -Recurse -Force; Remove-Item -Path "docs\*" -Recurse -Force; Copy-Item -Path "build\web\*" -Destination "docs\" -Recurse -Force; git add docs/; git commit -m "Fix logos folder"; git push origin main

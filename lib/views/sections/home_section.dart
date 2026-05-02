@@ -192,14 +192,14 @@ class _HomeSectionState extends State<HomeSection> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          flex: 1,
+          flex: 4,
           child: SingleChildScrollView(
             physics: const NeverScrollableScrollPhysics(),
             child: _buildLeftContent(context),
           ),
         ),
         Expanded(
-          flex: 1,
+          flex: 3,
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -244,149 +244,152 @@ class _HomeSectionState extends State<HomeSection> {
   Widget _buildLeftContent(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 800;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GradientText(
-          AppConstants.heroName,
-          colors: const [Colors.blue, Colors.purple, Colors.pink],
-          style: TextStyle(
-            fontSize: isMobile ? 32 : 48,
-            fontWeight: FontWeight.bold,
-            height: 1.2,
-          ),
-        ),
-        const SizedBox(height: 12),
-
-        Text(
-          AppConstants.heroTitle,
-          style: TextStyle(
-            fontSize: isMobile ? 24 : 32,
-            color: Colors.blue,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(height: 20),
-
-        Container(
-          padding: EdgeInsets.all(isMobile ? 16 : 20),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.blue.withOpacity(0.1),
-                Colors.purple.withOpacity(0.05),
-              ],
-            ),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.blue.withOpacity(0.3)),
-          ),
-          child: Text(
-            displayedText.isEmpty ? " " : displayedText,
+    return Padding(
+      padding: const EdgeInsets.only(right: 25),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GradientText(
+            AppConstants.heroName,
+            colors: const [Colors.blue, Colors.purple, Colors.pink],
             style: TextStyle(
-              fontSize: isMobile ? 14 : 16,
-              height: 1.5,
-              letterSpacing: 0.5,
+              fontSize: isMobile ? 32 : 48,
+              fontWeight: FontWeight.bold,
+              height: 1.2,
             ),
           ),
-        ),
-        const SizedBox(height: 24),
+          const SizedBox(height: 12),
 
-        Wrap(
-          spacing: isMobile ? 8 : 12,
-          runSpacing: isMobile ? 8 : 12,
-          children: achievements.map((achievement) {
-            return Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: isMobile ? 12 : 16,
-                vertical: isMobile ? 6 : 8,
-              ),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    (achievement['color'] as Color).withOpacity(0.2),
-                    (achievement['color'] as Color).withOpacity(0.1),
-                  ],
-                ),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: (achievement['color'] as Color).withOpacity(0.5),
-                  width: 1.5,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: (achievement['color'] as Color).withOpacity(0.3),
-                    blurRadius: 8,
-                    spreadRadius: 1,
-                  ),
+          Text(
+            AppConstants.heroTitle,
+            style: TextStyle(
+              fontSize: isMobile ? 24 : 32,
+              color: Colors.blue,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          Container(
+            padding: EdgeInsets.all(isMobile ? 16 : 20),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.blue.withOpacity(0.1),
+                  Colors.purple.withOpacity(0.05),
                 ],
               ),
-              child: Text(
-                achievement['text'],
-                style: TextStyle(
-                  color: achievement['color'],
-                  fontWeight: FontWeight.bold,
-                  fontSize: isMobile ? 11 : 13,
-                ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.blue.withOpacity(0.3)),
+            ),
+            child: Text(
+              displayedText.isEmpty ? " " : displayedText,
+              style: TextStyle(
+                fontSize: isMobile ? 14 : 16,
+                height: 1.5,
+                letterSpacing: 0.5,
               ),
-            );
-          }).toList(),
-        ),
-        const SizedBox(height: 32),
+            ),
+          ),
+          const SizedBox(height: 24),
 
-        Row(
-          children: [
-            Expanded(
-              child: ElevatedButton(
-                onPressed: widget.onViewWork,
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
-                    vertical: isMobile ? 12 : 15,
-                    horizontal: isMobile ? 16 : 20,
+          Wrap(
+            spacing: isMobile ? 8 : 12,
+            runSpacing: isMobile ? 8 : 12,
+            children: achievements.map((achievement) {
+              return Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isMobile ? 12 : 16,
+                  vertical: isMobile ? 6 : 8,
+                ),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      (achievement['color'] as Color).withOpacity(0.2),
+                      (achievement['color'] as Color).withOpacity(0.1),
+                    ],
                   ),
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: (achievement['color'] as Color).withOpacity(0.5),
+                    width: 1.5,
                   ),
-                  elevation: 2,
+                  boxShadow: [
+                    BoxShadow(
+                      color: (achievement['color'] as Color).withOpacity(0.3),
+                      blurRadius: 8,
+                      spreadRadius: 1,
+                    ),
+                  ],
                 ),
                 child: Text(
-                  'View Work',
+                  achievement['text'],
                   style: TextStyle(
-                    fontSize: isMobile ? 15 : 17,
-                    fontWeight: FontWeight.w500,
+                    color: achievement['color'],
+                    fontWeight: FontWeight.bold,
+                    fontSize: isMobile ? 11 : 13,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+          const SizedBox(height: 32),
+
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: widget.onViewWork,
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(
+                      vertical: isMobile ? 12 : 15,
+                      horizontal: isMobile ? 16 : 20,
+                    ),
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 2,
+                  ),
+                  child: Text(
+                    'View Work',
+                    style: TextStyle(
+                      fontSize: isMobile ? 15 : 17,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: OutlinedButton(
-                onPressed: widget.onHireMe,
-                style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
-                    vertical: isMobile ? 12 : 15,
-                    horizontal: isMobile ? 16 : 20,
+              const SizedBox(width: 16),
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: widget.onHireMe,
+                  style: OutlinedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(
+                      vertical: isMobile ? 12 : 15,
+                      horizontal: isMobile ? 16 : 20,
+                    ),
+                    foregroundColor: Colors.blue,
+                    side: const BorderSide(color: Colors.blue, width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
-                  foregroundColor: Colors.blue,
-                  side: const BorderSide(color: Colors.blue, width: 2),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-                child: Text(
-                  'Hire Me',
-                  style: TextStyle(
-                    fontSize: isMobile ? 15 : 17,
-                    fontWeight: FontWeight.w500,
+                  child: Text(
+                    'Hire Me',
+                    style: TextStyle(
+                      fontSize: isMobile ? 15 : 17,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 
