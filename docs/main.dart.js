@@ -71710,7 +71710,7 @@ if(s!=null)s.aO()}},
 $S:64}
 A.acj.prototype={
 $0(){var s=this.a,r=s.e,q=s.f
-s.e=r+"Crafting beautiful, performant cross-platform apps with Flutter. 5+ years of experience delivering production-grade solutions."[q]
+s.e=r+"Crafting beautiful, performant cross-platform apps with Flutter. 4+ years of experience delivering production-grade solutions."[q]
 s.f=q+1},
 $S:0}
 A.acf.prototype={
@@ -71754,7 +71754,7 @@ A.a30.prototype={
 $2(a,b){var s,r=b.b
 if(r>1200)s=3
 else s=r>800?2:1
-return new A.md(A.ajp(new A.yv(s,24,24,0.8),new A.a3_(s,this.a),3,B.fn,!0),null)},
+return new A.md(A.ajp(new A.yv(s,24,24,1.2),new A.a3_(s,this.a),3,B.fn,!0),null)},
 $S:486}
 A.a3_.prototype={
 $2(a,b){var s=null,r=this.b[b]
