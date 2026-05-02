@@ -25,7 +25,7 @@ class _HomeSectionState extends State<HomeSection> {
   String displayedText = "";
   int currentIndex = 0;
   final String fullText =
-      "Crafting beautiful, performant cross-platform apps with Flutter. 5+ years of experience delivering production-grade solutions.";
+      "Crafting beautiful, performant cross-platform apps with Flutter. 4+ years of experience delivering production-grade solutions.";
   Timer? _typingTimer;
 
   bool _isLoading = true;
