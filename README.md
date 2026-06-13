@@ -1,1 +1,1 @@
-flutter build web --release; Copy-Item -Path "assets/logos" -Destination "build/web/assets/" -Recurse -Force; Remove-Item -Path "docs\*" -Recurse -Force; Copy-Item -Path "build\web\*" -Destination "docs\" -Recurse -Force; git add docs/; git commit -m "Fix logos folder"; git push origin main
+flutter build web --release --base-href "/kabbir_portfolio/"; if (Test-Path docs) { Remove-Item docs\* -Recurse -Force }; Copy-Item build\web\* docs\ -Recurse -Force; git add docs/; git commit -m "Deploy web build to GitHub Pages"; git push origin main
